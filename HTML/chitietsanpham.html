@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chi Tiết Sản Phẩm - Bánh Gato Socola Sữa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="icon" href="/IMG/logo.webp" />
+    <style>
+        .navbar {
+            background-color: transparent !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-link:hover {
+            text-decoration: solid;
+            color: #ffcc00 !important;
+            border-bottom: 2px solid #ffcc00;
+            font-weight: 500;
+        }
+        
+        .nav-link.active:hover {
+            color: #ffcc00 !important;
+            border-bottom: 2px solid #ffcc00;
+            text-decoration: solid;
+        }
+        
+        .icon-bar {
+            color: rgb(158, 152, 152);
+            font-size: 18px;
+            margin-left: 15px;
+        }
+        
+        .header {
+            background-image: url("/IMG/slider_3.webp");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0 80px;
+            position: relative;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-family: "Dancing Script", cursive;
+            font-size: 50px;
+            font-weight: bold;
+            color: #f4c542;
+            margin: 80px 20px 20px 20px;
+        }
+        
+        .breadcrumb-custom {
+            background: none;
+            justify-content: center;
+            color: #fff;
+        }
+        
+        .breadcrumb-custom a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-custom .active {
+            color: #f4c542;
+        }
+        
+        .product-image {
+            border-radius: 10px;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        .price-sale {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .badge-sale {
+            position: absolute;
+            top: 10px;
+            left: 30px;
+        }
+        
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .tv {
+            text-decoration: none;
+        }
+        
+        .footer {
+            background-color: #f6e8cb;
+            padding: 40px 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            gap: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+        }
+        
+        .footer-column h4 {
+            margin-top: 15px;
+            color: #b78b2f;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin: 5px 0;
+        }
+        
+        .kt {
+            height: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark py-3 bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold">
+                <img src="/IMG/logo.webp" alt="Logo" height="70" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav align-items-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/gioithieu.html">Giới thiệu</a>
+                    </li>
+
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sản phẩm
+              </a>
+                        <div class="dropdown-menu" aria-labelledby="productDropdown" style="background-color: white; left: 400px; width: 50%">
+                            <div class="container">
+                                <div class="row py-4">
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning tv">Bánh kem</h6>
+                                        <p class="mb-1">
+                                            <a href="/HTML/Banhkem.html" class="mb-1 tv text-dark">Bánh sinh nhật</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhkem.html"
+                          >Bánh sự kiện</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhkem.html"
+                          >Bánh cho trẻ em</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhkem.html"
+                          >Bánh kem đặt trước</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh mì</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì kẹp</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh cán lớp</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì gối</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì baguette</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì mặn</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì ngọt</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh ngọt</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh bông lan</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh Chiffon</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh cuộn</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh su kem</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh tráng miệng</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Bánh miếng</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Bánh mousse</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Tiramisu/ Caramel/ Sữa chua</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Panna cotta & Pudding</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh khô</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhKho.html"
+                          >Bánh quy</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhKho.html"
+                          >Bánh mì nướng</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhKho.html"
+                          >Bánh sừng bò mini</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/HTML/tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/lienhe.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/HeThongcuahang.html">Hệ thống cửa hàng</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="tv" href="/HTML/dangnhapvadangki.html"
+                ><i class="bi bi-person icon-bar"></i
+              ></a>
+                        <a class="tv text-white" href="/HTML/dangki.html"><i
+                  class="bi bi-person-circle icon-bar"></i></i></a>
+                        <a class="tv" href="/HTML/Giohang.html"><i class="bi bi-bag icon-bar"></i
+              ></a>
+                    </li>
+                </ul>
+                </div>
+                </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-overlay"></div>
+        <div class="container header-content">
+            <h1>Chi tiết sản phẩm</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Chi tiết sản phẩm
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-5 position-relative">
+                <span class="badge bg-danger badge-sale">-20%</span>
+                <img src="/IMG/Banhsungbo.webp" alt="Bánh Gato Socola Sữa" class="img-fluid product-image" />
+            </div>
+
+            <div class="col-md-7">
+                <h2 class="mb-3">Bánh sừng bò mì mini</h2>
+                <p>
+                    <span class="price-sale">40.000₫</span>
+                    <span class="price-original ms-2">50.000₫</span>
+                </p>
+
+                <p class="product-description">
+                    Bánh Gato Socola Sữa là sự kết hợp hoàn hảo giữa lớp bánh bông lan mềm mịn và socola ngọt đậm đà. Phần nhân sữa béo ngậy tan ngay trong miệng, đem lại trải nghiệm vị giác tuyệt vời cho mọi lứa tuổi.
+                </p>
+
+                <ul>
+                    <li>Khối lượng: 110g</li>
+                    <li>Hạn sử dụng: 5 ngày</li>
+                    <li>Bảo quản: Nơi khô ráo, thoáng mát</li>
+                    <li>Sản xuất tại: Việt Nam</li>
+                </ul>
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Số lượng:</label>
+                    <input type="number" id="quantity" class="form-control w-25" value="1" min="1" />
+                </div>
+
+                <button class="btn btn-primary btn-lg">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h4>Đánh giá sản phẩm</h4>
+            <p>⭐️⭐️⭐️⭐️☆ (4.5/5 – Dựa trên 128 đánh giá)</p>
+            <blockquote class="blockquote">
+                <p>
+                    “Bánh mềm, vị socola rất ngon, không quá ngọt, ăn kèm sữa tươi là tuyệt vời.”
+                </p>
+                <footer class="blockquote-footer">Lan Nguyễn</footer>
+            </blockquote>
+        </div>
+
+        <div class="mt-5">
+            <h4>Sản phẩm liên quan</h4>
+            <div class="row row-cols-1 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card">
+                        <img src="/IMG/BanhCuonTraXanh.webp" class="card-img-top" alt="Bánh Cuộn Trà Xanh" />
+                        <div class="card-body">
+                            <h5 class="card-title">Bánh Cuộn Trà Xanh 110G</h5>
+                            <p class="card-text">35.000₫</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/IMG/BanhSukemnhanSocola.jpg" class="card-img-top" alt="Bánh Su Kem Nhân Socola" />
+                        <div class="card-body">
+                            <h5 class="card-title">Bánh Su Kem Nhân Socola</h5>
+                            <p class="card-text">30.000₫</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/IMG/BanhOpera.webp" class="card-img-top" alt="Bánh Opera 90G" />
+                        <div class="card-body">
+                            <h5 class="card-title">Bánh Opera 90G</h5>
+                            <p class="card-text">36.000₫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="/IMG/logo.webp" alt="Dola Bakery logo" class="kt" />
+                <p>
+                    Hãy đến với Dola Bakery và hãy để những món bánh tuyệt vời của chúng tôi làm cho cuộc sống bạn thêm ngọt ngào
+                </p>
+                <h4>HÌNH THỨC THANH TOÁN</h4>
+                <img src="/IMG/payment_1.webp" alt="Phương thức thanh toán" style="height: 30px" />
+                <img src="/IMG/payment_2.webp" alt="Phương thức thanh toán" style="height: 30px" />
+                <img src="/IMG/payment_3.webp" alt="Phương thức thanh toán" style="height: 30px" />
+            </div>
+
+            <div class="footer-column">
+                <h4>CHÍNH SÁCH</h4>
+                <ul>
+                    <li>Chính sách thành viên</li>
+                    <li>Chính sách thanh toán</li>
+                    <li>Hướng dẫn mua hàng</li>
+                    <li>Quà tặng tri ân</li>
+                    <li>Bảo mật thông tin cá nhân</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>THÔNG TIN CHUNG</h4>
+                <p>
+                    <strong>Địa chỉ:</strong> 413 đường 30 Tháng 4, Hưng Lợi, Ninh Kiều, Cần Thơ.
+                </p>
+                <p><strong>Điện thoại:</strong> 0913546127</p>
+                <p><strong>Email:</strong> vix5533@gmail.com</p>
+                <h4>LIÊN KẾT SÀN</h4>
+                <img src="/IMG/shopee.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/lazada.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/tiki.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/sendo.webp" alt="shopee" style="height: 30px" />
+            </div>
+
+            <div class="footer-column">
+                <h4>HỖ TRỢ</h4>
+                <p>
+                    <strong>MUA ONLINE (08:00 - 21:00 mỗi ngày)</strong
+            ><br />19006750<br /><i
+              >Tất cả các ngày trong tuần (Trừ tết Âm Lịch)</i
+            >
+          </p>
+          <p>
+            <strong>GÓP Ý & KHIẾU NẠI (08:30 - 20:30)</strong
+            ><br />19006750<br /><i
+              >Tất cả các ngày trong tuần (Trừ tết Âm Lịch)</i
+            >
+          </p>
+          <h4>MẠNG XÃ HỘI</h4>
+          <img src="/IMG/zalo.webp" alt="Social media" style="height: 30px" />
+          <img
+            src="/IMG/facebook.webp"
+            alt="Social media"
+            style="height: 30px"
+          />
+          <img
+            src="/IMG/youtube.webp"
+            alt="Social media"
+            style="height: 30px"
+          />
+          <img src="/IMG/google.webp" alt="Social media" style="height: 30px" />
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="icon" href="/IMG/logo.webp" />
+    <title>Đăng Ký Tài Khoản</title>
+    <style>
+        .navbar {
+            background-color: transparent !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-link:hover {
+            text-decoration: solid;
+            color: #ffcc00 !important;
+            border-bottom: 2px solid #ffcc00;
+            font-weight: 500;
+        }
+        
+        .nav-link.active:hover {
+            color: #ffcc00 !important;
+            border-bottom: 2px solid #ffcc00;
+            text-decoration: solid;
+        }
+        
+        .icon-bar {
+            color: rgb(158, 152, 152);
+            font-size: 18px;
+            margin-left: 15px;
+        }
+        
+        .header {
+            background-image: url("/IMG/slider_3.webp");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0 80px;
+            position: relative;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-family: "Dancing Script", cursive;
+            font-size: 50px;
+            font-weight: bold;
+            color: #f4c542;
+            margin: 80px 20px 20px 20px;
+        }
+        
+        .breadcrumb-custom {
+            background: none;
+            justify-content: center;
+            color: #fff;
+        }
+        
+        .breadcrumb-custom a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-custom .active {
+            color: #f4c542;
+        }
+        
+        .login-box {
+            background-color: #f3e4c7;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background-color: transparent !important;
+            border: none;
+            border-bottom: 2px solid #caa336;
+            font-weight: bold;
+            color: #caa336;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            color: #333;
+        }
+        
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 0;
+            border: 1px solid #caa336;
+        }
+        
+        .btn-custom {
+            background-color: #caa336;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-custom:hover {
+            background-color: #b9912c;
+        }
+        
+        .social-btn {
+            width: 48%;
+        }
+        
+        .divider-text {
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            background-color: #f6e8cb;
+            padding: 40px 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            gap: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+        }
+        
+        .footer-column h4 {
+            margin-top: 15px;
+            color: #b78b2f;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin: 5px 0;
+        }
+        
+        .kt {
+            height: 90px;
+        }
+        
+        .tv {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark py-3 bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold">
+                <img src="/IMG/logo.webp" alt="Logo" height="70" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav align-items-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/gioithieu.html">Giới thiệu</a>
+                    </li>
+
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sản phẩm
+              </a>
+                        <div class="dropdown-menu" aria-labelledby="productDropdown" style="background-color: white; left: 400px; width: 50%">
+                            <div class="container">
+                                <div class="row py-4">
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning tv">Bánh kem</h6>
+                                        <p class="mb-1">
+                                            <a href="/HTML/Banhkem.html" class="mb-1 tv text-dark">Bánh sinh nhật</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhkem.html"
+                          >Bánh sự kiện</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhkem.html"
+                          >Bánh cho trẻ em</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhkem.html"
+                          >Bánh kem đặt trước</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh mì</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì kẹp</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh cán lớp</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì gối</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì baguette</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì mặn</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhmi.html"
+                          >Bánh mì ngọt</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh ngọt</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh bông lan</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh Chiffon</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh cuộn</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/Banhngot.html"
+                          >Bánh su kem</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh tráng miệng</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Bánh miếng</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Bánh mousse</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Tiramisu/ Caramel/ Sữa chua</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhTrangMieng.html"
+                          >Panna cotta & Pudding</a
+                        >
+                      </p>
+                    </div>
+
+                    <div class="col">
+                      <h6 class="fw-bold text-warning">Bánh khô</h6>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhKho.html"
+                          >Bánh quy</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhKho.html"
+                          >Bánh mì nướng</a
+                        >
+                      </p>
+                      <p class="mb-1">
+                        <a class="text-dark tv" href="/HTML/BanhKho.html"
+                          >Bánh sừng bò mini</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/HTML/tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/lienhe.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/HeThongcuahang.html">Hệ thống cửa hàng</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="tv" href="/HTML//dangnhapvadangki.html"
+                ><i class="bi bi-person icon-bar"></i
+              ></a>
+                        <a class="tv text-white" href="/HTML/dangki.html"><i
+                  class="bi bi-person-circle icon-bar"></i></i></a>
+                        <a class="tv" href="/HTML/Giohang.html"><i class="bi bi-bag icon-bar"></i
+              ></a>
+                    </li>
+                </ul>
+                </div>
+                </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-overlay"></div>
+        <div class="container header-content">
+            <h1>Đăng Nhập Tài Khoản</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Đăng Nhập Tài Khoản
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="login-box">
+        <ul class="nav nav-tabs justify-content-center mb-4" id="loginTab">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#login">ĐĂNG NHẬP</a
+          >
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <!-- ĐĂNG NHẬP -->
+        <div id="login" class="tab-pane fade show active">
+          <h4 class="text-center mb-4">ĐĂNG NHẬP</h4>
+          <form>
+            <input type="email" class="form-control" placeholder="Email" />
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Mật khẩu"
+            />
+            <button type="submit" class="btn btn-custom">Đăng nhập</button>
+          </form>
+          <div class="text-center mt-3">
+            <a href="/HTML/quenmk.html">Quên mật khẩu</a>
+    </div>
+    <div class="divider-text">Hoặc đăng nhập bằng</div>
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-primary social-btn">
+              <i class="bi bi-facebook"></i> Facebook
+            </button>
+        <button class="btn btn-danger social-btn">
+              <i class="bi bi-google"></i> Google
+            </button>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="/IMG/logo.webp" alt="Dola Bakery logo" class="kt" />
+                <p>
+                    Hãy đến với Dola Bakery và hãy để những món bánh tuyệt vời của chúng tôi làm cho cuộc sống bạn thêm ngọt ngào
+                </p>
+                <h4>HÌNH THỨC THANH TOÁN</h4>
+                <img src="/IMG/payment_1.webp" alt="Phương thức thanh toán" style="height: 30px" />
+                <img src="/IMG/payment_2.webp" alt="Phương thức thanh toán" style="height: 30px" />
+                <img src="/IMG/payment_3.webp" alt="Phương thức thanh toán" style="height: 30px" />
+            </div>
+
+            <div class="footer-column">
+                <h4>CHÍNH SÁCH</h4>
+                <ul>
+                    <li>Chính sách thành viên</li>
+                    <li>Chính sách thanh toán</li>
+                    <li>Hướng dẫn mua hàng</li>
+                    <li>Quà tặng tri ân</li>
+                    <li>Bảo mật thông tin cá nhân</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>THÔNG TIN CHUNG</h4>
+                <p>
+                    <strong>Địa chỉ:</strong> 413 đường 30 Tháng 4, Hưng Lợi, Ninh Kiều, Cần Thơ.
+                </p>
+                <p><strong>Điện thoại:</strong> 0913546127</p>
+                <p><strong>Email:</strong> vix5533@gmail.com</p>
+                <h4>LIÊN KẾT SÀN</h4>
+                <img src="/IMG/shopee.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/lazada.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/tiki.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/sendo.webp" alt="shopee" style="height: 30px" />
+            </div>
+
+            <div class="footer-column">
+                <h4>HỖ TRỢ</h4>
+                <p>
+                    <strong>MUA ONLINE (08:00 - 21:00 mỗi ngày)</strong
+            ><br />19006750<br /><i
+              >Tất cả các ngày trong tuần (Trừ tết Âm Lịch)</i
+            >
+          </p>
+          <p>
+            <strong>GÓP Ý & KHIẾU NẠI (08:30 - 20:30)</strong
+            ><br />19006750<br /><i
+              >Tất cả các ngày trong tuần (Trừ tết Âm Lịch)</i
+            >
+          </p>
+          <h4>MẠNG XÃ HỘI</h4>
+          <img src="/IMG/zalo.webp" alt="Social media" style="height: 30px" />
+          <img
+            src="/IMG/facebook.webp"
+            alt="Social media"
+            style="height: 30px"
+          />
+          <img
+            src="/IMG/youtube.webp"
+            alt="Social media"
+            style="height: 30px"
+          />
+          <img src="/IMG/google.webp" alt="Social media" style="height: 30px" />
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

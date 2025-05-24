@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Thanh Toán</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="icon" href="/IMG/logo.webp" />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .checkout-container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 15px;
+      }
+
+      .form-section,
+      .order-summary {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .form-section h5,
+      .order-summary h5 {
+        margin-bottom: 20px;
+      }
+
+      .order-summary img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+
+      .product-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .total-line {
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="checkout-container">
+      <div class="logo">
+        <img src="/IMG/logo.webp" alt="logo" style="width: 100px" />
+      </div>
+      <div class="row g-4">
+        <div class="col-md-7">
+          <div class="form-section">
+            <h5>Thông tin nhận hàng</h5>
+            <form>
+              <input
+                type="email"
+                class="form-control mb-3"
+                placeholder="Email"
+              />
+              <input
+                type="text"
+                class="form-control mb-3"
+                placeholder="Họ và tên"
+              />
+              <input
+                type="tel"
+                class="form-control mb-3"
+                placeholder="Số điện thoại (tùy chọn)"
+              />
+              <input
+                type="text"
+                class="form-control mb-3"
+                placeholder="Địa chỉ (tùy chọn)"
+              />
+              <select class="form-select mb-3">
+                <option selected>--- Tỉnh thành ---</option>
+                <option>Hà Nội</option>
+                <option>Thành Phố Hồ Chí Minh</option>
+                <option>Cần Thơ</option>
+                <option>Đà Nẵng</option>
+                <option>Bình Dương</option>
+              </select>
+              <select class="form-select mb-3">
+                <option selected>Quận huyện (tùy chọn)</option>
+                <option>Quận Ninh Kiều</option>
+                <option>Huyện Châu Thành</option>
+                <option>Quận Thốt Nốt</option>
+                <option>Huyện Phú Tân</option>
+                <option>Quận 12</option>
+              </select>
+              <select class="form-select mb-3">
+                <option selected>Phường xã (tùy chọn)</option>
+                <option>Bình Thạnh Đông</option>
+                <option>Tân Hòa</option>
+                <option>Châu Phú</option>
+                <option>Hòa Lạc</option>
+              </select>
+              <textarea
+                class="form-control mb-3"
+                placeholder="Ghi chú (tùy chọn)"
+              ></textarea>
+
+              <h5>Thanh toán</h5>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="payment"
+                  id="transfer"
+                />
+                <label class="form-check-label" for="transfer">
+                  Chuyển khoản
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="payment"
+                  id="cod"
+                />
+                <label class="form-check-label" for="cod"> Thu hộ (COD) </label>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="order-summary">
+            <h5>Đơn hàng (1 sản phẩm)</h5>
+            <div class="product-item mb-3">
+              <img src="/IMG/Banhquybo.webp" alt="Bánh Quy" />
+              <div>
+                <div>Bánh Quy Bơ Mứt Dâu</div>
+                <div>42.000đ</div>
+              </div>
+            </div>
+            <input
+              type="text"
+              class="form-control mb-3"
+              placeholder="Nhập mã giảm giá"
+            />
+            <button class="btn btn-secondary w-100 mb-3">Áp dụng</button>
+            <div class="d-flex justify-content-between">
+              <span>Tạm tính</span><span>42.000đ</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>Phí vận chuyển</span><span>-</span>
+            </div>
+            <div class="d-flex justify-content-between total-line mt-3">
+              <span>Tổng cộng</span><span>42.000đ</span>
+            </div>
+            <button class="btn btn-primary w-100 mt-3">ĐẶT HÀNG</button>
+            <div class="mt-2">
+              <a style="text-decoration: none" href="/HTML/Giohang.html"
+                >&lt; Quay về giỏ hàng</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

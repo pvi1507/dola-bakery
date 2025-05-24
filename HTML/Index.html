@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Dola Bakery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link rel="icon" href="/IMG/logo.webp" />
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+        
+        .navbar {
+            background-color: transparent !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-link:hover {
+            text-decoration: solid;
+            color: #ffcc00 !important;
+            border-bottom: 2px solid #ffcc00;
+            font-weight: 500;
+        }
+        
+        .nav-link.active:hover {
+            color: #ffcc00 !important;
+            border-bottom: 2px solid #ffcc00;
+            text-decoration: solid;
+        }
+        
+        #heroCarousel {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #heroCarousel .carousel-item {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        #heroCarousel .carousel-item img {
+            object-fit: cover;
+            height: 100vh;
+            width: 100%;
+            opacity: 0.7;
+        }
+        
+        .carousel-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            max-width: 400px;
+            max-height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .carousel-caption h2 {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        
+        .carousel-caption p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .carousel-caption .btn {
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+        
+        .btn-custom {
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .icon-bar {
+            color: rgb(158, 152, 152);
+            font-size: 25px;
+            margin-left: 5px;
+        }
+        
+        .img-fluid {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .img-fluid:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .discount-section {
+            width: 85%;
+            position: relative;
+            padding: 40px 20px;
+            background-color: #fff;
+            border: 5px solid #d4a056;
+            border-radius: 15px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+        
+        .discount-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .discount-header h2 {
+            font-family: "Dancing Script", cursive;
+            font-size: 36px;
+            color: #4b2e1f;
+        }
+        
+        .discount-header p {
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .carousel-wrapper {
+            position: relative;
+        }
+        
+        .products-wrapper {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px;
+        }
+        
+        .products-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .product-card {
+            flex: 0 0 auto;
+            width: 220px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        .product-name {
+            margin: 10px 0 5px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 14px;
+        }
+        
+        .price-new {
+            color: #d4a056;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+        
+        .badge-discount {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            background-color: #f7c948;
+            color: #fff;
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        
+        .favorite-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #e74c3c;
+            cursor: pointer;
+        }
+        
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #d4a056;
+            color: white;
+            border: none;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        .nav-left {
+            left: -20px;
+        }
+        
+        .nav-right {
+            right: -20px;
+        }
+        
+        .nav-arrow:hover {
+            background-color: #b68535;
+        }
+        
+        .section-title {
+            font-family: "Dancing Script", cursive;
+            font-size: 36px;
+            color: #4b2e1f;
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        
+        .card-custom {
+            position: relative;
+            border: none;
+            transition: transform 0.3s;
+        }
+        
+        .card-custom:hover {
+            transform: scale(1.02);
+        }
+        
+        .card-custom img {
+            border-radius: 10px;
+            object-fit: cover;
+            height: 220px;
+            width: 100%;
+        }
+        
+        .heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: red;
+            font-size: 24px;
+        }
+        
+        .price {
+            color: goldenrod;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+            font-size: 0.9rem;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 5px;
+        }
+        
+        .img-fluid {
+            width: 100%;
+            height: auto;
+        }
+        
+        .banner-box {
+            position: relative;
+        }
+        
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            font-family: "Georgia", serif;
+        }
+        
+        .banner-text .sub {
+            font-size: 1rem;
+            font-weight: 400;
+            display: block;
+        }
+        
+        .ht {
+            width: 50%;
+            height: auto;
+        }
+        
+        .category-list .list-group-item {
+            border: none;
+            font-weight: 500;
+        }
+        
+        .category-list .list-group-item.active {
+            background-color: transparent;
+            color: goldenrod;
+            font-weight: bold;
+            border-left: 4px solid goldenrod;
+        }
+        
+        .product-item h6 {
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .product-item .text-gold {
+            color: goldenrod;
+            font-weight: bold;
+        }
+        
+        .product-item .icons span {
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .section-title span {
+            display: block;
+            font-size: 1.2rem;
+            margin-top: -10px;
+            color: #c59d5f;
+        }
+        
+        .pv {
+            font-size: 15px;
+        }
+        
+        .news-date {
+            background: #f7a600;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        
+        .news-card {
+            position: relative;
+            border: none;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .news-img {
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .testimonial-section {
+            background: url("/IMG/banner1.jpg") center/cover no-repeat;
+            padding: 60px 0;
+            color: white;
+            position: relative;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #f1c40f;
+            border-radius: 10px;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .testimonial-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .subscribe-section {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+        
+        .subscribe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            background-color: #f6e8cb;
+        }
+        
+        .subscribe-image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .subscribe-content {
+            padding: 40px;
+            flex: 1;
+        }
+        
+        .subscribe-content h2 {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: "Playfair Display", cursive;
+            margin-bottom: 10px;
+        }
+        
+        .subscribe-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .subscribe-form {
+            display: flex;
+        }
+        
+        .subscribe-form input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        
+        .subscribe-form button {
+            background-color: #d5a03f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .instagram-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .instagram-section h2 {
+            font-family: "Playfair Display", cursive;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .instagram-section p {
+            color: #d5a03f;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .instagram-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .instagram-gallery img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .footer {
+            background-color: #f6e8cb;
+            padding: 40px 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            gap: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+        }
+        
+        .footer-column h4 {
+            margin-top: 15px;
+            color: #b78b2f;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin: 5px 0;
+        }
+        
+        .kt {
+            height: 90px;
+        }
+        
+        .tv {
+            text-decoration: none;
+        }
+        
+        @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark py-3 bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="/IMG/logo.webp" alt="Logo" height="95" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav align-items-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/gioithieu.html">Giới thiệu</a>
+                    </li>
+
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="productDropdown" style="background-color: white; left: 400px; width: 50%">
+                            <div class="container">
+                                <div class="row py-4">
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning tv">Bánh kem</h6>
+                                        <p class="mb-1">
+                                            <a href="/HTML/Banhkem.html" class="mb-1 tv text-dark">Bánh sinh nhật</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhkem.html">Bánh sự kiện</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhkem.html">Bánh cho trẻ em</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhkem.html">Bánh kem đặt trước</a>
+                                        </p>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning">Bánh mì</h6>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhmi.html">Bánh mì kẹp</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhmi.html">Bánh cán lớp</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhmi.html">Bánh mì gối</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhmi.html">Bánh mì baguette</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhmi.html">Bánh mì mặn</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhmi.html">Bánh mì ngọt</a>
+                                        </p>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning">Bánh ngọt</h6>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhngot.html">Bánh bông lan</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhngot.html">Bánh Chiffon</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhngot.html">Bánh cuộn</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/Banhngot.html">Bánh su kem</a>
+                                        </p>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning">Bánh tráng miệng</h6>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhTrangMieng.html">Bánh miếng</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhTrangMieng.html">Bánh mousse</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhTrangMieng.html">Tiramisu/ Caramel/
+                                                Sữa chua</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhTrangMieng.html">Panna cotta &
+                                                Pudding</a>
+                                        </p>
+                                    </div>
+
+                                    <div class="col">
+                                        <h6 class="fw-bold text-warning">Bánh khô</h6>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhKho.html">Bánh quy</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhKho.html">Bánh mì nướng</a>
+                                        </p>
+                                        <p class="mb-1">
+                                            <a class="text-dark tv" href="/HTML/BanhKho.html">Bánh sừng bò mini</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/tintuc.html">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/lienhe.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/HTML/HeThongcuahang.html">Hệ thống cửa hàng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="tv text-white" href="/HTML/dangnhap.html"><i class="bi bi-person icon-bar"></i></a>
+                        <a class="tv text-white" href="/HTML/dangki.html"><i
+                                class="bi bi-person-circle icon-bar"></i></i></a>
+                        <a class="tv text-white" href="/HTML/Giohang.html"><i class="bi bi-bag icon-bar me-2"></i></a>
+                    </li>
+                    <form class="d-flex me-3" role="search" action="/search" method="GET">
+                        <input class="form-control" type="search" name="q" placeholder="Tìm kiếm..." aria-label="Search">
+                        <button class="btn btn-outline-warning" type="submit">Tìm</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/IMG/slider_1.webp" class="d-block w-100" alt="Slide 1" />
+                <div class="carousel-caption">
+                    <h2>Bánh tươi mỗi ngày</h2>
+                    <p>Giảm đến 20% khi đặt hàng qua web</p>
+                    <a href="/HTML/Products.html" class="btn btn-outline-warning">Xem ngay</a
+            >
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="/IMG/slider_2.webp" class="d-block w-100" alt="Slide 2" />
+          <div class="carousel-caption">
+            <h2>Sản phẩm mới hấp dẫn</h2>
+            <p>Khám phá những món bánh mới nhất</p>
+            <a href="/HTML/Products.html" class="btn btn-outline-warning"
+              >Khám phá</a
+            >
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="/IMG/slider_3.webp" class="d-block w-100" alt="Slide 3" />
+          <div class="carousel-caption">
+            <h2>Giao hàng tận nơi</h2>
+            <p>Nhanh chóng, tiện lợi, đúng giờ</p>
+            <a href="/HTML/Products.html" class="btn btn-outline-warning"
+              >Đặt ngay</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Trước</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Sau</span>
+      </button>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <img src="/IMG/chinhsach_1.webp" alt="Vận chuyển" width="40" class="mb-2" />
+                    <h6 class="fw-bold">Miễn phí vận chuyển</h6>
+                    <p class="text-muted small">
+                        Áp dụng free ship cho tất cả đơn hàng từ 300 nghìn
+                    </p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <img src="/IMG/chinhsach_2.webp" alt="Đổi trả" width="40" class="mb-2" />
+                    <h6 class="fw-bold">Đổi trả dễ dàng</h6>
+                    <p class="text-muted small">
+                        Đổi ngay trong ngày nếu như bánh không đúng yêu cầu
+                    </p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <img src="/IMG/chinhsach_3.webp" alt="Hỗ trợ" width="40" class="mb-2" />
+                    <h6 class="fw-bold">Hỗ trợ nhanh chóng</h6>
+                    <p class="text-muted small">
+                        Gọi Hotline: 19006750 để được hỗ trợ ngay
+                    </p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <img src="/IMG/chinhsach_4.webp" alt="Thanh toán" width="40" class="mb-2" />
+                    <h6 class="fw-bold">Thanh toán đa dạng</h6>
+                    <p class="text-muted small">
+                        Thanh toán khi nhận hàng, Napas, Visa, Chuyển Khoản
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="position-relative">
+                        <img src="/IMG/danhmuc_1.webp" class="img-fluid" alt="Bánh kếp" />
+                        <div class="position-absolute bottom-0 w-100 text-center py-2" style="background-color: rgba(255, 255, 255, 0.8)">
+                            <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif">
+                                Bánh kếp
+                            </h5>
+                            <a href="/HTML/Products.html" class="text-decoration-none text-dark">Xem ngay</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="position-relative">
+                <img src="/IMG/danhmuc_2.webp" class="img-fluid" alt="Bánh su kem" />
+                <div class="position-absolute bottom-0 w-100 text-center py-2" style="background-color: rgba(255, 255, 255, 0.8)">
+                    <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif">
+                        Bánh su kem
+                    </h5>
+                    <a href="/HTML/Products.html" class="text-decoration-none text-dark">Xem ngay</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="position-relative">
+                <img src="/IMG/danhmuc_3.webp" class="img-fluid" alt="Bánh mì nướng" />
+                <div class="position-absolute bottom-0 w-100 text-center py-2" style="background-color: rgba(255, 255, 255, 0.8)">
+                    <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif">
+                        Bánh mì nướng
+                    </h5>
+                    <a href="/HTML/Products.html" class="text-decoration-none text-dark">Xem ngay</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="position-relative">
+                <img src="/IMG/danhmuc_4.webp" class="img-fluid" alt="Bánh khác" />
+                <div class="position-absolute bottom-0 w-100 text-center py-2" style="background-color: rgba(255, 255, 255, 0.8)">
+                    <h5 class="fw-bold mb-1" style="font-family: 'Playfair Display', serif">
+                        Bánh khác
+                    </h5>
+                    <a href="#" class="text-decoration-none text-dark">Xem ngay</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="discount-section">
+        <div class="discount-header">
+            <h2>Bánh đang giảm giá</h2>
+            <p>Chương trình đã kết thúc, hẹn gặp lại trong thời gian sớm nhất!</p>
+        </div>
+
+        <div class="carousel-wrapper">
+            <button class="nav-arrow nav-left" onclick="scrollCarousel(-1)">
+                &#8249;
+            </button>
+            <div class="products-wrapper" id="carousel">
+                <div class="product-card">
+                    <div class="badge-discount">-10%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <a href="/HTML/chitietsanpham.html"><img src="/IMG/Banhsungbo.webp" class="product-img" alt="Bánh Sừng Bò Mini" /></a>
+                    <div class="product-name">Bánh Sừng Bò Mini</div>
+                    <div class="product-price">
+                        <span class="price-new">18.000đ</span>
+                        <span class="price-old">20.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-25%</div>
+                    <div class="badge-new">New</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/Banhminuong.webp" class="product-img" alt="Bánh Mì Nướng Caramen" />
+                    <div class="product-name">Bánh Mì Nướng Caramen</div>
+                    <div class="product-price">
+                        <span class="price-new">15.000đ</span>
+                        <span class="price-old">20.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-16%</div>
+                    <div class="badge-new">New</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/Banhquybo.webp" class="product-img" alt="Bánh Quy Bơ Mứt Dâu" />
+                    <div class="product-name">Bánh Quy Bơ Mứt Dâu</div>
+                    <div class="product-price">
+                        <span class="price-new">42.000đ</span>
+                        <span class="price-old">50.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-28%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/caramen.webp" class="product-img" alt="Caramen" />
+                    <div class="product-name">Caramen</div>
+                    <div class="product-price">
+                        <span class="price-new">13.000đ</span>
+                        <span class="price-old">18.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-21%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/moussechanhleo.webp" class="product-img" alt="Mousse Chanh Leo" />
+                    <div class="product-name">Mousse Chanh Leo</div>
+                    <div class="product-price">
+                        <span class="price-new">31.000đ</span>
+                        <span class="price-old">39.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-10%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/BanhOpera.webp" class="product-img" alt="Bánh Opera 90G" />
+                    <div class="product-name">Bánh Opera 90G</div>
+                    <div class="product-price">
+                        <span class="price-new">36.000đ</span>
+                        <span class="price-old">40.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-20%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/BanhGato.webp" class="product-img" alt="Bánh Gato Socola Sữa" />
+                    <div class="product-name">Bánh Gato Socola Sữa</div>
+                    <div class="product-price">
+                        <span class="price-new">40.000đ</span>
+                        <span class="price-old">50.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-25%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/BanhDonut.webp" class="product-img" alt="Bánh Donut Socola Dâu" />
+                    <div class="product-name">Bánh Donut Socola Dâu</div>
+                    <div class="product-price">
+                        <span class="price-new">15.000đ</span>
+                        <span class="price-old">20.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-17%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/BanhDonutSocolaTrang.webp" class="product-img" alt="Bánh Donut Socola Trắng" />
+                    <div class="product-name">Bánh Donut Socola Trắng</div>
+                    <div class="product-price">
+                        <span class="price-new">20.000đ</span>
+                        <span class="price-old">24.000đ</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="badge-discount">-20%</div>
+                    <div class="favorite-icon">&hearts;</div>
+                    <img src="/IMG/BanhHoangKim.webp" class="product-img" alt="Bánh Hoàng Kim" />
+                    <div class="product-name">Bánh Hoàng Kim</div>
+                    <div class="product-price">
+                        <span class="price-new">320.000đ</span>
+                        <span class="price-old">400.000đ</span>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-arrow nav-right" onclick="scrollCarousel(1)">
+                &#8250;
+            </button>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Được mua nhiều nhất</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+            <div class="col">
+                <div class="card card-custom">
+                    <img src="/IMG/Suachua.webp" alt="Sữa Chua" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Sữa Chua</h6>
+                        <div class="price">13.000₫</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <img src="/IMG/BanhRedVelvet.webp" alt="Red Velvet" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Red Velvet 90G</h6>
+                        <div class="price">58.000₫</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <img src="/IMG/BanhSukemnhanSocola.jpg" alt="Su Kem Socola" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Su Kem Nhân Socola</h6>
+                        <div class="price">30.000₫</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <span class="discount-badge">- 20%</span>
+                    <img src="/IMG/BanhGato.webp" alt="Gato Socola" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Gato Socola Sữa</h6>
+                        <div>
+                            <span class="price">40.000₫</span>
+                            <span class="old-price">50.000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <img src="/IMG/BanhCuonTraXanh.webp" alt="Bánh Cuộn Trà Xanh" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Cuộn Trà Xanh 110G</h6>
+                        <div class="price">35.000₫</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <img src="/IMG/banner.webp" class="img-fluid rounded mb-4" alt="Croissant Banner" />
+
+        <h2 class="section-title">Bánh mới nhất</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+            <div class="col">
+                <div class="card card-custom">
+                    <span class="discount-badge">- 25%</span>
+                    <img src="/IMG/Banhminuong.webp" alt="Bánh mì nướng Caramen" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Mì Nướng Caramen</h6>
+                        <div>
+                            <span class="price">15.000₫</span>
+                            <span class="old-price">20.000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <span class="badge bg-warning position-absolute top-0 start-0 m-1">New</span>
+                    <img src="/IMG/Banhquydua.webp" alt="Bánh Quy Dừa" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Quy Dừa</h6>
+                        <div class="price">42.000₫</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <span class="badge bg-warning position-absolute top-0 start-0 m-1">New</span>
+                    <img src="/IMG/Banhquybo.webp" alt="Bánh Quy Mứt Dâu" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Quy Bơ Mứt Dâu</h6>
+                        <div>
+                            <span class="price">42.000₫</span>
+                            <span class="old-price">50.000₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <span class="badge bg-warning position-absolute top-0 start-0 m-1">New</span>
+                    <img src="/IMG/BanhSukemnhanvani.webp" alt="Su Kem Vani" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Su Kem Nhân Vani</h6>
+                        <div class="price">29.000₫</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-custom">
+                    <span class="badge bg-warning position-absolute top-0 start-0 m-1">New</span>
+                    <img src="/IMG/banhcuonvani.webp" alt="Bánh Cuộn Vani" />
+                    <div class="heart-icon">♥</div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bánh Cuộn Vani 110G</h6>
+                        <div class="price">35.000₫</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="banner-box position-relative">
+                    <img src="/IMG/banner2.webp" class="img-fluid rounded" alt="Bánh nướng & Sữa" />
+                    <div class="banner-text">
+                        Bánh nướng & Sữa<br /><span class="sub">Vị béo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="banner-box position-relative">
+                    <img src="/IMG/banner3.webp" class="img-fluid rounded" alt="Bánh & Trà" />
+                    <div class="banner-text">
+                        Bánh & Trà<br /><span class="sub">Hương vị tươi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <ul class="list-group category-list">
+                    <li class="list-group-item active">Bánh kem</li>
+                    <li class="list-group-item">Bánh mì</li>
+                    <li class="list-group-item">Bánh ngọt</li>
+                    <li class="list-group-item">Bánh tráng miệng</li>
+                    <li class="list-group-item">Bánh khô</li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <h2 class="section-title">Tất cả bánh</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/banhkemMacaron.webp" class="ht" alt="Macaron Delight" />
+                            <h6>Bánh Kem Macaron Delight</h6>
+                            <div class="text-gold">380.000₫</div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/banhkemDreamy.webp" class="ht" alt="Dreamy Lady" />
+                            <h6>Bánh Kem Dreamy Lady</h6>
+                            <div class="text-gold">380.000₫</div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/BanhHoangKim.webp" class="ht" alt="Hoàng Kim" />
+                            <h6>Bánh Hoàng Kim</h6>
+                            <div class="text-gold">
+                                320.000₫ <del class="text-muted">400.000₫</del>
+                            </div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/Banhmoussechocolate.webp" class="ht" alt="Mousse Chocolate" />
+                            <h6>Bánh Mousse Chocolate</h6>
+                            <div class="text-gold">390.000₫</div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/banhkemsweet.webp" class="ht" alt="Sweet Heart" />
+                            <h6>Bánh Kem Sweet Heart 4</h6>
+                            <div class="text-gold">
+                                150.000₫ <del class="text-muted">170.000₫</del>
+                            </div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/banhkemamazing.webp" class="ht" alt="Amazing Chocolate" />
+                            <h6>Bánh Kem Amazing Chocolate</h6>
+                            <div class="text-gold">380.000₫</div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/banhkemendless.webp" class="ht" alt="Endless Love" />
+                            <h6>Bánh Kem Endless Love</h6>
+                            <div class="text-gold">380.000₫</div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="product-item text-center">
+                            <img src="/IMG/banhkemprincess.webp" class="ht" alt="Princess" />
+                            <h6>Bánh Kem Princess</h6>
+                            <div class="text-gold">
+                                380.000₫ <del class="text-muted">420.000₫</del>
+                            </div>
+                            <div class="icons">
+                                <span>🛒</span><span>🔍</span><span>❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-warning"><a class="text-decoration-none text-dark" href="/HTML/Banhkem.html">Xem tất cả</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container py-4">
+        <h2 class="section-title">Tin tức mới nhất <span>❧❧❧</span></h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <span class="news-date">17/08/2023</span>
+                    <img src="/IMG/tintuc1.webp" class="card-img-top news-img" alt="Donut" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold pv">Donut chỉ từ 8k tại Dola</h5>
+                        <p class="card-text small">
+                            Nhắc đến bánh Donut, dân sành thưởng thức hẳn không còn xa lạ gì với món ăn vặt rất phổ biến ở các nước phương Tây này. Dù có nguồn...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <span class="news-date">17/08/2023</span>
+                    <img src="/IMG/tintuc2.webp" class="card-img-top news-img" alt="Croissant" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold pv">
+                            Croissant ngàn lớp - đa dạng cách thưởng...
+                        </h5>
+                        <p class="card-text small">
+                            Những chiếc bánh sừng bò với hương bơ thơm béo đặc trưng lại còn vừa miệng với độ giòn xốp, dai dai, từ "ngàn" lớp bánh. Nổi bật với hình...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card news-card">
+                    <span class="news-date">17/08/2023</span>
+                    <img src="/IMG/tintuc3.webp" class="card-img-top news-img" alt="Tart" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold pv">
+                            Bánh Tart thơm ngậy không thể bỏ lỡ
+                        </h5>
+                        <p class="card-text small">
+                            Tart trứng là loại bánh được rất nhiều người yêu thích ở Hong Kong được rất nhiều người yêu thích. Không những thế, trong bảng xếp hạng 50 loại món ăn ngon...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="container">
+            <h2 class="section-title text-white">
+                Khách hàng nói gì <span>❧❧❧</span>
+            </h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-5">
+                    <div class="testimonial-card d-flex align-items-start">
+                        <img src="/IMG/anh.jpg" alt="Kim Tuyền" class="testimonial-img" />
+                        <div>
+                            <h6 class="mb-0 fw-bold">Kim Tuyền</h6>
+                            <p class="text-warning small mb-2">Hướng Dẫn Viên Du Lịch</p>
+                            <p class="small">
+                                Tất cả các loại bánh của Dola Bakery đều rất ngon, đa dạng. Nhân viên thân thiện, tư vấn nhiệt tình. Tôi sẽ luôn ủng hộ.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="testimonial-card d-flex align-items-start">
+                        <img src="/IMG/sang.jpg" alt="Sang" class="testimonial-img" />
+                        <div>
+                            <h6 class="mb-0 fw-bold">Văn Sang</h6>
+                            <p class="text-warning small mb-2">Kĩ Sư</p>
+                            <p class="small">
+                                Hương vị đặc biệt, phục vụ tận tình. Tôi đã có trải nghiệm tuyệt vời với Dola Bakery. Tôi sẽ luôn ủng hộ.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe-section">
+        <div class="subscribe-container">
+            <div class="subscribe-image">
+                <img src="/IMG/dangkinhantin.webp" alt="Subscribe image" />
+            </div>
+            <div class="subscribe-content">
+                <h2>Đăng ký nhận tin</h2>
+                <p>
+                    Đăng ký ngay và được giảm giá 15% cho lần mua hàng đầu tiên và nhiều chương trình hấp dẫn dành cho bạn!
+                </p>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Nhập email nhận tin khuyến mãi" required />
+                    <button type="submit">ĐĂNG KÝ</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram-section">
+        <h2>Follow Instagram</h2>
+        <p>@dola_bakery</p>
+        <div class="instagram-gallery">
+            <img src="/IMG/image_ins_1.webp" alt="img1" />
+            <img src="/IMG/image_ins_2.webp" alt="img2" />
+            <img src="/IMG/image_ins_3.webp" alt="img3" />
+            <img src="/IMG/image_ins_4.webp" alt="img4" />
+            <img src="/IMG/image_ins_5.webp" alt="img5" />
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <img src="/IMG/logo.webp" alt="Dola Bakery logo" class="kt" />
+                <p>
+                    Hãy đến với Dola Bakery và hãy để những món bánh tuyệt vời của chúng tôi làm cho cuộc sống bạn thêm ngọt ngào
+                </p>
+                <h4>HÌNH THỨC THANH TOÁN</h4>
+                <img src="/IMG/payment_1.webp" alt="Phương thức thanh toán" style="height: 30px" />
+                <img src="/IMG/payment_2.webp" alt="Phương thức thanh toán" style="height: 30px" />
+                <img src="/IMG/payment_3.webp" alt="Phương thức thanh toán" style="height: 30px" />
+            </div>
+
+            <div class="footer-column">
+                <h4>CHÍNH SÁCH</h4>
+                <ul>
+                    <li>Chính sách thành viên</li>
+                    <li>Chính sách thanh toán</li>
+                    <li>Hướng dẫn mua hàng</li>
+                    <li>Quà tặng tri ân</li>
+                    <li>Bảo mật thông tin cá nhân</li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>THÔNG TIN CHUNG</h4>
+                <p>
+                    <strong>Địa chỉ:</strong> 413 đường 30 Tháng 4, Hưng Lợi, Ninh Kiều, Cần Thơ.
+                </p>
+                <p><strong>Điện thoại:</strong> 0913546127</p>
+                <p><strong>Email:</strong> vix5533@gmail.com</p>
+                <h4>LIÊN KẾT SÀN</h4>
+                <img src="/IMG/shopee.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/lazada.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/tiki.webp" alt="shopee" style="height: 30px" />
+                <img src="/IMG/sendo.webp" alt="shopee" style="height: 30px" />
+            </div>
+
+            <div class="footer-column">
+                <h4>HỖ TRỢ</h4>
+                <p>
+                    <strong>MUA ONLINE (08:00 - 21:00 mỗi ngày)</strong><br />19006750<br /><i>Tất cả các ngày trong
+                        tuần (Trừ tết
+                        Âm Lịch)</i>
+                </p>
+                <p>
+                    <strong>GÓP Ý & KHIẾU NẠI (08:30 - 20:30)</strong><br />19006750<br /><i>Tất cả các ngày trong tuần
+                        (Trừ tết
+                        Âm Lịch)</i>
+                </p>
+                <h4>MẠNG XÃ HỘI</h4>
+                <img src="/IMG/zalo.webp" alt="Social media" style="height: 30px" />
+                <img src="/IMG/facebook.webp" alt="Social media" style="height: 30px" />
+                <img src="/IMG/youtube.webp" alt="Social media" style="height: 30px" />
+                <img src="/IMG/google.webp" alt="Social media" style="height: 30px" />
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById("carousel");
+            const cardWidth = 236;
+            carousel.scrollBy({
+                left: direction * cardWidth,
+                behavior: "smooth",
+            });
+        }
+    </script>
+</body>
+
+</html>
